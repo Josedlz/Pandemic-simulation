@@ -41,6 +41,8 @@ class pandemic{
     the first time */
     pandemic();
 
+    ~pandemic();
+
     /* Getter for running */
     bool get_running();
 

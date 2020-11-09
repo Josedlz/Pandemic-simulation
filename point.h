@@ -9,6 +9,7 @@
 #include "math.h"
 #include "vector_t.h"
 
+
 class point{
 
   /*Position vector */
@@ -24,16 +25,20 @@ class point{
 
   /* Updates point's vector of velocity */
   void update(double dx, double dy);
-
+	
+	// TODO: Include states HEALTHY, INFECTED, RECOVERED
+  int status;
   
   public:
 
     /* Constructor */
-    point() = default;
+    point() = default; 
+    
+    /* Another constructor */
     point(double x, double y, double vx, double vy);
 
     /* Set point */
-    void set_point(double x, double y, double dx, double dy);
+    void set_point(double x, double y, double vx, double vy);
     
     /* Displaces the point over the direction of its vector of
     motion */
@@ -44,11 +49,6 @@ class point{
       return count;
     }
 
-    /* Self explanatory */
-    void increment_count(){
-      ++count;
-    }
-
     /* Calculates time to hit other particle */
     double time_to_hit(point* other);
 
@@ -57,9 +57,6 @@ class point{
 
     /* Self explanatory */
     double time_to_hit_horizontal_wall();
-
-    /* Returns current kinetic energy */
-    double kinetic_energy();
 
     /* Bounce both particles on opposite directions */
     void bounce_off(point* other);

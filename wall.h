@@ -16,7 +16,6 @@ class wall{
   public:
   
     /* Constructor */
-
 };
 
 #endif

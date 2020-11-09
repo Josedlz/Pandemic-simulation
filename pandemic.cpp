@@ -20,6 +20,8 @@ pandemic::pandemic()
 
 }
 
+// TODO: free dynamic memory
+
 void pandemic::predict(point* a, double limit)
 {
   if (a == nullptr) return;
@@ -77,6 +79,7 @@ void pandemic::update(double limit)
       predict(a, limit);
       predict(b, limit);
   }
+  running = false;
 }
 
 void pandemic::render(){

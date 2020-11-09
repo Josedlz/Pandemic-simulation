@@ -3,6 +3,7 @@
 
 point::point(double x, double y, double vx, double vy)
 {
+  status = 0;
   count = 0;
   r = {x, y};
   v = {vx, vy};
@@ -82,7 +83,7 @@ void point::bounce_off(point* other)
 void point::bounce_off_vertical_wall()
 {
   /* Invert velocity's vertical component */
-  v[1] = -v[1];
+  v[0] = -v[0];
   
   /* Increment collision count */
   ++count;
@@ -91,13 +92,8 @@ void point::bounce_off_vertical_wall()
 void point::bounce_off_horizontal_wall()
 {
   /* Invert velocity's horizontal component */
-  v[0] = -v[0];
+  v[1] = -v[1];
 
   /* Increment collision count */
   ++count;
-}
-
-double point::kinetic_energy()
-{
-  return 0.5 * (v[0]*v[0] + v[1]*v[1]);
 }
