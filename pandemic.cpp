@@ -29,7 +29,7 @@ void pandemic::predict(point* a, double limit)
     {
       double dt = a->time_to_hit(&points[i]);
       if (timer + dt <= limit)
-        schedule.push(Event(timer + dt, a, points[i]));
+        schedule.push(Event(timer + dt, a, &points[i]));
     }
 
     /* point-wall collisions */

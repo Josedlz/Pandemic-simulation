@@ -4,6 +4,7 @@
 //in memoriam luis miranda
 
 #include <queue>
+#include <vector>
 #include "point.h"
 #include "event.h"
 /* Number of points */
@@ -32,9 +33,8 @@ class pandemic{
 
   void predict(point* a, double limit);
 
-
   /* Holds all future collisions */
-  std::priority_queue<Event, vector<Event>, comparator> schedule;
+  std::priority_queue<Event, std::vector<Event>, comparator> schedule;
 
   public:
     /* Constructor: sets everything for
