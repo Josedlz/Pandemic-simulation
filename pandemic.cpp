@@ -50,7 +50,7 @@ void pandemic::update(double limit)
   {
     predict(&points[i], limit);
   }
-  schedule.push(Event(0, nullptr, nullptr));        // redraw event
+  //schedule.push(Event(0, nullptr, nullptr));        // redraw event
 
   // the main event-driven simulation loop
   while (not schedule.empty()) 

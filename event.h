@@ -24,9 +24,6 @@ class Event{
   /* Predicted collision time */
   double predicted_time;
 
-  /* Event-driven simulation requires it */
-  bool invalidated;
-
   public:
 
     Event(double t, point* pA, point* pB);
@@ -36,9 +33,6 @@ class Event{
 
     /* Getter for invalidated */
     bool get_invalidated();
-
-    /* Setter for invalidated */
-    void set_invalidated(bool value);
 
     /* Returns points */
     point* get_a();

@@ -10,12 +10,9 @@ Event::Event(double t, point* pA, point* pB)
 
 bool Event::get_invalidated()
 {
-  return invalidated;
-}
-
-void Event::set_invalidated(bool value)
-{
-  invalidated = value;
+	if(a == nullptr && a->count() != countA) return 0;
+	if(b == nullptr && b->count() != countB) return 0;
+	return 1;
 }
 
 point* Event::get_a()
