@@ -1,17 +1,103 @@
 #include "point.h"
 
 
-point::point(int x, int y, int dx, int dy){
-  this->x = x; this->y = y;
-  dz[0] = dx; dz[1] = dy;
+point::point(double x, double y, double vx, double vy)
+{
+  count = 0;
+  r = {x, y};
+  v = {vx, vy};
 }
 
-void point::move(){
-  x += dz[0];
-  y += dz[1];
+void point::set_point(double x, double y, double vx, double vy)
+{
+  r = {x, y};
+  v = {vx, vy};
 }
 
-void point::update(int dx, int dy){
-  dz[0] = dx;
-  dz[1] = dy;
+void point::move(double dt)
+{
+  r = r + dt * v;
+}
+
+void point::update(double vx, double vy)
+{
+  v = {vx, vy};
+}
+
+double point::time_to_hit(point* other)
+{
+  if (this == other) return INF;
+
+  vector_t dr = other->r - r;
+  vector_t dv = other->v - v;
+
+  double dvdr = dv.dot(dr);
+  if (dvdr > 0)      return INF;
+
+  double dvdv = dv.dot(dv);
+  if (dvdv == 0)     return INF;
+
+  double drdr = dr.dot(dr);
+  double sigma = radius + other->radius;
+  double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
+  if (d < 0)         return INF;
+
+
+  return -(dvdr + sqrt(d)) / dvdv;
+}
+
+double point::time_to_hit_vertical_wall()
+{
+  if      (v[0] > 0) return (1.0 - r[0] - radius) / v[0];
+  else if (v[0] < 0) return (radius - r[0]) / v[0];  
+  else               return INF;
+}
+
+double point::time_to_hit_horizontal_wall()
+{
+  if      (v[1] > 0) return (1.0 - r[1] - radius) / v[1];
+  else if (v[1] < 0) return (radius - r[1]) / v[1];
+  else               return INF;
+}
+
+void point::bounce_off(point* other)
+{
+  vector_t dv = other->v - v;
+  vector_t dr = other->r - r;
+  double sigma = other->radius + radius;
+  double J = (dv.dot(dr)) / sigma;
+
+  /* Impulse vector */
+  vector_t j = (J / sigma) * r;
+
+  /* Update velocities for each particle */
+  v = v + j;
+  other->v = v - j;
+
+  /* Increment collision count for both particles */
+  ++count;
+  ++other->count;
+}
+
+void point::bounce_off_vertical_wall()
+{
+  /* Invert velocity's vertical component */
+  v[1] = -v[1];
+  
+  /* Increment collision count */
+  ++count;
+}
+
+void point::bounce_off_horizontal_wall()
+{
+  /* Invert velocity's horizontal component */
+  v[0] = -v[0];
+
+  /* Increment collision count */
+  ++count;
+}
+
+double point::kinetic_energy()
+{
+  return 0.5 * (v[0]*v[0] + v[1]*v[1]);
 }

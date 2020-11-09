@@ -5,18 +5,22 @@
 
 #include <queue>
 #include "point.h"
-
-/* Map dimensions */
-#define DIM 1000
-
+#include "event.h"
 /* Number of points */
 #define N_POINTS 100
+
+struct comparator{
+  bool operator()(Event& e1, Event& e2)
+  {
+    return e1.get_predicted_time() < e2.get_predicted_time();
+  }
+};
 
 /* Main class, simulates all */
 class pandemic{
 
   /* Time counter */
-  unsigned long long timer;
+  double timer;
 
   /* True while running */ 
   bool running;
@@ -26,8 +30,11 @@ class pandemic{
 
   point* points = new point[N_POINTS];
 
+  void predict(point* a, double limit);
+
+
   /* Holds all future collisions */
-  std::priority_queue<hvd1, hvd2> schedule;
+  std::priority_queue<Event, vector<Event>, comparator> schedule;
 
   public:
     /* Constructor: sets everything for
@@ -37,8 +44,11 @@ class pandemic{
     /* Getter for running */
     bool get_running();
 
-    /* updates objects on screen */
-    void update();
+    /* Updates objects on screen */
+    void update(double limit);
+
+    /* Renders objects on screen */
+    void render();
 };
 
 #endif

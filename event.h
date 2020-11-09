@@ -4,59 +4,48 @@
 #include "point.h"
 #include "wall.h"
 
-/* Describes a generic event */
+/*
+  An event during a particle collision simulation. Each event contains
+  the time at which it will occur (assuming no supervening actions)
+  and pointers to the particles a and b involved.
+
+    -  a and b both null:      redraw event
+    -  a null, b not null:     collision with vertical wall
+    -  a not null, b null:     collision with horizontal wall
+    -  a and b both not null:  collision between a and b
+*/
 class Event{
 
-  /* Involves at least one particle */
-  point* p1;
+  point* a; point* b;
+
+  /* Collision count for each particle at event creation */
+  int countA; int countB;
 
   /* Predicted collision time */
-  unsigned long long predicted_time;
+  double predicted_time;
 
   /* Event-driven simulation requires it */
   bool invalidated;
 
   public:
 
-    Event();
+    Event(double t, point* pA, point* pB);
   
-    /* Executes collision with wall,
-    updating particles involved */
-    virtual void execute();
+    /* Updates everything on screen */
+    void update();
 
     /* Getter for invalidated */
     bool get_invalidated();
 
     /* Setter for invalidated */
     void set_invalidated(bool value);
-};
 
-/* Event representing point with
-point collision */
-class PP_collision: public Event{
-  point* p2;
+    /* Returns points */
+    point* get_a();
+    point* get_b();
 
-  public:
-    PP_collision();
-
-    /* Executes collision between 2
-    particles, updating them */
-    void execute(); 
-
-};
-
-/*Event representing point with
-wall collision */
-class PW_collision: public Event{
-
-  public:
-    PW_collision();
-
-    /* Executes collision between 
-    a particle and a wall, updating
-    the particle */
-    void execute();
-
+    /* Return predicted time */
+    double get_predicted_time();
 };
 
 #endif 
