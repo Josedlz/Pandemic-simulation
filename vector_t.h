@@ -32,25 +32,25 @@ class vector_t{
         friend vector_t operator* (const vector_t& other, const double& number);
         friend vector_t operator/ (const double& number, const vector_t& other);
         friend vector_t operator/ (const vector_t& other, const double& number);
-	    friend std::ostream& operator<<(std::ostream& stream, const vector_t& other);
+	    friend std::ostream& operator<< (std::ostream& stream, const vector_t& other);
 };
 
-vector_t operator* (const double& number, const vector_t& other){
+inline vector_t operator* (const double& number, const vector_t& other){
     vector_t v(number * other.comp[0], number * other.comp[1]);
     return v;
 }
 
-vector_t operator*(const vector_t& other, const double& number){
+inline vector_t operator*(const vector_t& other, const double& number){
     vector_t v(number * other.comp[0], number * other.comp[1]);
     return v;
 }
 
-vector_t operator/ (const vector_t& other, const double& number){
+inline vector_t operator/ (const vector_t& other, const double& number){
     vector_t v(number / other.comp[0], number / other.comp[1]);
     return v;
 }
 
-std::ostream& operator<<(std::ostream& stream, const vector_t& other){
+inline std::ostream& operator<<(std::ostream& stream, const vector_t& other){
 	stream << other.comp[0] << " " << other.comp[1];
 	return stream;
 }

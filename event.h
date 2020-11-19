@@ -9,7 +9,7 @@
   the time at which it will occur (assuming no supervening actions)
   and pointers to the particles a and b involved.
 
-    -  a and b both null:      redraw event (ignorar)
+    -  a and b both null:      render everything on screen
     -  a null, b not null:     collision with vertical wall
     -  a not null, b null:     collision with horizontal wall
     -  a and b both not null:  collision between a and b

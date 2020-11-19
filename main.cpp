@@ -6,7 +6,5 @@ using namespace std;
 int main() {
   pandemic simulation;
 
-  while(simulation.get_running()){
-    simulation.update();
-  }
+  simulation.update();
 }

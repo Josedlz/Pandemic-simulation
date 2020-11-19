@@ -97,3 +97,9 @@ void point::bounce_off_horizontal_wall()
   /* Increment collision count */
   ++count;
 }
+
+
+int point::get_count()
+{
+  return count;
+}

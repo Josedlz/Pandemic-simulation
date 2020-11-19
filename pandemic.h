@@ -11,6 +11,9 @@
 /* Number of points */
 #define N_POINTS 100
 
+/* Number of renderizations per clock tick */
+#define HZ 0.5
+
 struct comparator{
   bool operator()(Event& e1, Event& e2)
   {
@@ -31,7 +34,7 @@ class pandemic{
   int scene[DIM][DIM];
 
   /* Limit for the simulation */
-  double limit = 1000;
+  double limit = 10000;
 
   point* points = new point[N_POINTS];
 

@@ -45,9 +45,7 @@ class point{
     void move(double dt);
 
     /* Getter for count */
-    int get_count(){
-      return count;
-    }
+    int get_count();
 
     /* Calculates time to hit other particle */
     double time_to_hit(point* other);

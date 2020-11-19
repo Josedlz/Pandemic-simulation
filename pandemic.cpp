@@ -3,7 +3,6 @@ found at: https://algs4.cs.princeton.edu/61event/
 */
 
 #include "pandemic.h"
-#include <random>
 
 pandemic::pandemic()
 {
@@ -11,19 +10,18 @@ pandemic::pandemic()
   running = true; 
 
   // Use random_device to generate a seed for Mersenne twister engine.
-  std::random_device rd{};    
-
+  std::random_device rd{}; 
   // Use Mersenne twister engine to generate pseudo-random numbers.
   std::mt19937 engine{rd()};
 
-  // "Filter" MT engine's output to generate pseudo-random double values,
+  // 'Filter' MT engine's output to generate pseudo-random double values,
   // **uniformly distributed** on the closed interval [0, 1].
   // (Note that the range is [inclusive, inclusive].)
   std::uniform_real_distribution<double> dist1{0.0, 100.0};
   std::uniform_real_distribution<double> dist2{0.0, 10};
 
   // Generate pseudo-random number.
-    for(int i = 0; i < N_POINTS; i++){
+    for(int i = 0; i < N_POINTS; i++){ 
       double x = dist1(engine);
       double y = dist1(engine);
 
@@ -93,7 +91,7 @@ void pandemic::update()
       if      (a != nullptr && b != nullptr) a->bounce_off(b);                // particle-particle collision
       else if (a != nullptr && b == nullptr) a->bounce_off_vertical_wall();   // particle-wall collision
       else if (a == nullptr && b != nullptr) b->bounce_off_horizontal_wall(); // particle-wall collision
-      else if (a == nullptr && b == nullptr) render();                        // redraw event
+      else if (a == nullptr && b == nullptr) render();                        // render event
 
       // update the priority queue with new event involving a or b
       predict(a, limit);
@@ -103,8 +101,18 @@ void pandemic::update()
 }
 
 void pandemic::render(){
-  while(running){
-    std::cout << "huevada de sfml" << std::endl;
-  }
+  //Clear screen
+
+  for(int i = 0; i < N_POINTS; i++){
+    std::cout << "Huevada de SFML para el punto " << i << std::endl;
   //TODO: SFML part, here we render every component;
+  }
+
+  //mas huevadas supongo
+
+  /* Al final pusheamos un evento de render mas 
+  para garantizar nuestro regreso dentro de 1 / HZ segundos*/
+  if(timer < limit){
+    schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
+  }
 }
