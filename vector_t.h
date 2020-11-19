@@ -45,12 +45,7 @@ vector_t operator*(const vector_t& other, const double& number){
     return v;
 }
 
-vector_t operator* (const double& number, const vector_t& other){
-    vector_t v(number / other.comp[0], number / other.comp[1]);
-    return v;
-}
-
-vector_t operator*(const vector_t& other, const double& number){
+vector_t operator/ (const vector_t& other, const double& number){
     vector_t v(number / other.comp[0], number / other.comp[1]);
     return v;
 }

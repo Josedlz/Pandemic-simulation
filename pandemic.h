@@ -5,6 +5,7 @@
 
 #include <queue>
 #include <vector>
+#include <random>
 #include "point.h"
 #include "event.h"
 /* Number of points */
@@ -29,6 +30,9 @@ class pandemic{
   /* Represens scenario of the simulation */
   int scene[DIM][DIM];
 
+  /* Limit for the simulation */
+  double limit = 1000;
+
   point* points = new point[N_POINTS];
 
   void predict(point* a, double limit);
@@ -47,7 +51,7 @@ class pandemic{
     bool get_running();
 
     /* Updates objects on screen */
-    void update(double limit);
+    void update();
 
     /* Renders objects on screen */
     void render();

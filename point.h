@@ -66,7 +66,6 @@ class point{
 
     /* Bounce current particle with horizontal wall */
     void bounce_off_horizontal_wall();
-
 };
 
 #endif

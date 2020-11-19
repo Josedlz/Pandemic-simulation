@@ -28,5 +28,3 @@ double Event::get_predicted_time()
 {
   return predicted_time;
 }
-
-
