@@ -4,7 +4,7 @@
 #include<iostream>
 
 class vector_t{
-    double comp[2];
+    double comp[2]{};
     public:
         vector_t() = default;
 
@@ -30,7 +30,6 @@ class vector_t{
 
         friend vector_t operator* (const double& number, const vector_t& other);
         friend vector_t operator* (const vector_t& other, const double& number);
-        friend vector_t operator/ (const double& number, const vector_t& other);
         friend vector_t operator/ (const vector_t& other, const double& number);
 	    friend std::ostream& operator<< (std::ostream& stream, const vector_t& other);
 };

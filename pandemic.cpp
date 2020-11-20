@@ -7,7 +7,7 @@ found at: https://algs4.cs.princeton.edu/61event/
 pandemic::pandemic()
 {
   timer = 0;
-  running = true; 
+  running = false;
 
   // Use random_device to generate a seed for Mersenne twister engine.
   std::random_device rd{}; 
@@ -58,13 +58,21 @@ void pandemic::predict(point* a, double limit)
     schedule.push(Event(timer + 0.01, nullptr, nullptr));
 }
 
-bool pandemic::get_running()
+bool pandemic::get_running() const
 {
   return running;
 }
 
+void pandemic::set_running(bool val)
+{
+  running = val;
+}
+
 void pandemic::update()
 {
+  // no borrar, no c cómo funca, pero funca (obvi es tmp)
+  int xxx = 1;
+
   for (int i = 0; i < N_POINTS; i++) 
   {
     predict(&points[i], limit);
@@ -72,8 +80,8 @@ void pandemic::update()
   //schedule.push(Event(0, nullptr, nullptr));        // redraw event
 
   // the main event-driven simulation loop
-  while (not schedule.empty()) 
-  { 
+  while(not schedule.empty() && running)
+  {
       // get impending event, discard if invalidated
       Event e = schedule.top();
       schedule.pop();
@@ -96,6 +104,8 @@ void pandemic::update()
       // update the priority queue with new event involving a or b
       predict(a, limit);
       predict(b, limit);
+
+
   }
   running = false;
 }
@@ -105,7 +115,12 @@ void pandemic::render(){
 
   for(int i = 0; i < N_POINTS; i++){
     std::cout << "Huevada de SFML para el punto " << i << std::endl;
-  //TODO: SFML part, here we render every component;
+
+    sf::CircleShape c1(RADIUS);
+    c1.setFillColor(sf::Color(100, 250, 50));
+
+    // Clear screen
+    c1.setPosition(1.3,2.3);
   }
 
   //mas huevadas supongo

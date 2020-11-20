@@ -6,10 +6,11 @@
 #include <queue>
 #include <vector>
 #include <random>
+#include <SFML/Graphics.hpp>
 #include "point.h"
 #include "event.h"
 /* Number of points */
-#define N_POINTS 100
+#define N_POINTS 10
 
 /* Number of renderizations per clock tick */
 #define HZ 0.5
@@ -31,7 +32,7 @@ class pandemic{
   bool running;
 
   /* Represens scenario of the simulation */
-  int scene[DIM][DIM];
+  // int scene[DIM][DIM];
 
   /* Limit for the simulation */
   double limit = 10000;
@@ -51,7 +52,10 @@ class pandemic{
     ~pandemic();
 
     /* Getter for running */
-    bool get_running();
+    bool get_running() const;
+
+    /* Setter for running */
+    void set_running(bool val);
 
     /* Updates objects on screen */
     void update();

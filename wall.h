@@ -11,10 +11,10 @@ class wall{
   int h;
 
   /* Length */
-  int l; 
+  int l;
 
   public:
-  
+
     /* Constructor */
 };
 

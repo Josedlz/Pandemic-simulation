@@ -39,7 +39,7 @@ class Event{
     point* get_b();
 
     /* Return predicted time */
-    double get_predicted_time();
+    double get_predicted_time() const;
 };
 
 #endif 

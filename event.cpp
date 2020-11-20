@@ -13,9 +13,9 @@ Event::Event(double t, point* pA, point* pB)
 
 bool Event::get_invalidated()
 {
-	if(a != nullptr && a->get_count() != countA) return 1;
-	if(b != nullptr && b->get_count() != countB) return 1;
-	return 0;
+	if(a != nullptr && a->get_count() != countA) return true;
+	if(b != nullptr && b->get_count() != countB) return true;
+	return false;
 }
 
 point* Event::get_a()
@@ -27,7 +27,7 @@ point* Event::get_b()
   return b;
 }
 
-double Event::get_predicted_time()
+double Event::get_predicted_time() const
 {
   return predicted_time;
 }
