@@ -104,30 +104,50 @@ void pandemic::update()
       // update the priority queue with new event involving a or b
       predict(a, limit);
       predict(b, limit);
-
-
   }
   running = false;
 }
 
 void pandemic::render(){
-  //Clear screen
+  while(win.isOpen()) {
+    while(win.pollEvent(event)) {
+      if(event.type == sf::Event::EventType::Closed)
+        win.close();
+      if(event.type == sf::Event::EventType::KeyPressed) {
+        if(event.key.code == sf::Keyboard::Escape) {
+          running = false;
+          win.close();
+        }
+      }
+    }
+    for(int i = 0; i < N_POINTS; i++){
+      win.clear(sf::Color::Black);
 
-  for(int i = 0; i < N_POINTS; i++){
-    std::cout << "Huevada de SFML para el punto " << i << std::endl;
+      std::cout << "Huevada de SFML para el punto " << i << std::endl;
 
-    sf::CircleShape c1(RADIUS);
-    c1.setFillColor(sf::Color(100, 250, 50));
+      sf::CircleShape c1(RADIUS);
+      c1.setFillColor(sf::Color(100, 250, 50));
 
-    // Clear screen
-    c1.setPosition(1.3,2.3);
+      // Clear screen
+      c1.setPosition(1.3,2.3);
+
+      win.draw(c1);
+
+      win.display();
+    }
+
+    //mas huevadas supongo
+
+    /* Al final pusheamos un evento de render mas
+    para garantizar nuestro regreso dentro de 1 / HZ segundos*/
+    if(timer < limit){
+      schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
+    }
   }
+}
 
-  //mas huevadas supongo
+void pandemic::set_window() {
+  win.create(sf::VideoMode(WIDTH, HEIGHT), "P01nts S1mul4t10n", sf::Style::Default);
 
-  /* Al final pusheamos un evento de render mas 
-  para garantizar nuestro regreso dentro de 1 / HZ segundos*/
-  if(timer < limit){
-    schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
-  }
+  sf::Vector2u size = win.getSize();
 }

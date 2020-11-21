@@ -3,14 +3,16 @@
 
 //in memoriam luis miranda
 
+#include <SFML/Graphics.hpp>
 #include <queue>
 #include <vector>
 #include <random>
-#include <SFML/Graphics.hpp>
 #include "point.h"
 #include "event.h"
 /* Number of points */
 #define N_POINTS 10
+#define WIDTH 800
+#define HEIGHT 600
 
 /* Number of renderizations per clock tick */
 #define HZ 0.5
@@ -44,6 +46,12 @@ class pandemic{
   /* Holds all future collisions */
   std::priority_queue<Event, std::vector<Event>, comparator> schedule;
 
+  // Window
+  sf::RenderWindow win;
+  // Event
+  sf::Event event;
+  float  y;
+
   public:
     /* Constructor: sets everything for
     the first time */
@@ -62,6 +70,8 @@ class pandemic{
 
     /* Renders objects on screen */
     void render();
+
+    void set_window();
 };
 
 #endif
