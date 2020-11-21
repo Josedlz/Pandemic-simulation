@@ -1,7 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
-#define RADIUS 2
+#define RADIUS 8
 #define INF 1e9;
 /* Map dimensions */
 #define DIM 1000
@@ -39,7 +39,9 @@ class point{
 
     /* Set point */
     void set_point(double x, double y, double vx, double vy);
-    
+
+    vector_t get_position();
+
     /* Displaces the point over the direction of its vector of
     motion */
     void move(double dt);

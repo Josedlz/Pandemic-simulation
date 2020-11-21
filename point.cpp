@@ -1,7 +1,7 @@
 #include "point.h"
 
 
-point::point(double x, double y, double vx, double vy)
+point::point(double x , double y , double vx , double vy )
 {
   status = 0;
   count = 0;
@@ -9,12 +9,15 @@ point::point(double x, double y, double vx, double vy)
   v = {vx, vy};
 }
 
-void point::set_point(double x, double y, double vx, double vy)
+void point::set_point(double x, double y, double vx , double vy)
 {
   r = {x, y};
   v = {vx, vy};
 }
 
+vector_t point::get_position() {
+    return r;
+}
 void point::move(double dt)
 {
   r = r + dt * v;

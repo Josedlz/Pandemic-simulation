@@ -10,7 +10,7 @@
 #include "point.h"
 #include "event.h"
 /* Number of points */
-#define N_POINTS 10
+#define N_POINTS 100
 #define WIDTH 800
 #define HEIGHT 600
 
@@ -50,7 +50,11 @@ class pandemic{
   sf::RenderWindow win;
   // Event
   sf::Event event;
-  float  y;
+  //Particulas
+  sf::CircleShape *c1= new sf::CircleShape[N_POINTS];
+
+  sf::Clock *reloj1;
+  sf::Time *tiempo1;
 
   public:
     /* Constructor: sets everything for

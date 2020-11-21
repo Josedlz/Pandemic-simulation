@@ -6,7 +6,7 @@ found at: https://algs4.cs.princeton.edu/61event/
 
 pandemic::pandemic()
 {
-  timer = 0;
+  timer = 0 ;
   running = false;
 
   // Use random_device to generate a seed for Mersenne twister engine.
@@ -29,6 +29,12 @@ pandemic::pandemic()
       double vy = dist2(engine);
       points[i] = point(x, y, vx, vy);
     }
+
+    reloj1 = new sf::Clock();
+
+    tiempo1 = new sf::Time();
+
+
 }
 
 pandemic::~pandemic()
@@ -70,8 +76,6 @@ void pandemic::set_running(bool val)
 
 void pandemic::update()
 {
-  // no borrar, no c cómo funca, pero funca (obvi es tmp)
-  int xxx = 1;
 
   for (int i = 0; i < N_POINTS; i++) 
   {
@@ -121,17 +125,17 @@ void pandemic::render(){
       }
     }
     for(int i = 0; i < N_POINTS; i++){
-      win.clear(sf::Color::Black);
+        win.clear(sf::Color::Black);
 
       std::cout << "Huevada de SFML para el punto " << i << std::endl;
 
-      sf::CircleShape c1(RADIUS);
-      c1.setFillColor(sf::Color(100, 250, 50));
-
+      c1[i].setRadius(RADIUS);
+      c1[i].setFillColor(sf::Color(100, 250, 50));
       // Clear screen
-      c1.setPosition(1.3,2.3);
+      c1[i].setPosition(points[i].get_position()[0],points[i].get_position()[1]);
+      points[i].move(tiempo1->asSeconds());
 
-      win.draw(c1);
+      win.draw(c1[i]);
 
       win.display();
     }
@@ -140,9 +144,10 @@ void pandemic::render(){
 
     /* Al final pusheamos un evento de render mas
     para garantizar nuestro regreso dentro de 1 / HZ segundos*/
-    if(timer < limit){
-      schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
+    if(timer < limit) {
+        schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
     }
+    *tiempo1 = reloj1->getElapsedTime();
   }
 }
 
