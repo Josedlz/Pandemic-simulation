@@ -68,8 +68,11 @@ class point{
     /* Bounce current particle with vertical wall */
     void bounce_off_vertical_wall();
 
-    /* Bounce current particle with horizontal wall */
+    /* Bounce current particle with horizontal walbounce_off_walll */
     void bounce_off_horizontal_wall();
+
+    /* bounce_off_wall */
+    void bounce_off_wall(int dir);
 };
 
 #endif

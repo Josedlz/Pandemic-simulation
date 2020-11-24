@@ -1,6 +1,5 @@
 #include "point.h"
 
-
 point::point(double x , double y , double vx , double vy )
 {
   status = 0;
@@ -105,4 +104,12 @@ void point::bounce_off_horizontal_wall()
 int point::get_count()
 {
   return count;
+}
+
+void point::bounce_off_wall(int dir){
+  /* Invert velocity's component */
+  v[dir] = -v[dir];
+
+  /* Increment collision count */
+  ++count;
 }

@@ -33,8 +33,6 @@ pandemic::pandemic()
     reloj1 = new sf::Clock();
 
     tiempo1 = new sf::Time();
-
-
 }
 
 pandemic::~pandemic()
@@ -100,10 +98,10 @@ void pandemic::update()
       timer = e.get_predicted_time();
 
       // process event
-      if      (a != nullptr && b != nullptr) a->bounce_off(b);                // particle-particle collision
-      else if (a != nullptr && b == nullptr) a->bounce_off_vertical_wall();   // particle-wall collision
-      else if (a == nullptr && b != nullptr) b->bounce_off_horizontal_wall(); // particle-wall collision
-      else if (a == nullptr && b == nullptr) render();                        // render event
+      if      (a != nullptr && b != nullptr) a->bounce_off(b);        // particle-particle collision
+      else if (a != nullptr && b == nullptr) a->bounce_off_wall(0);   // particle-wall collision
+      else if (a == nullptr && b != nullptr) b->bounce_off_wall(1);   // particle-wall collision
+      else if (a == nullptr && b == nullptr) render();                // render event
 
       // update the priority queue with new event involving a or b
       predict(a, limit);
@@ -118,11 +116,13 @@ void pandemic::render(){
       if(event.type == sf::Event::EventType::Closed) {
         running = false;
         win.close();
+        exit(1);
       }
       if(event.type == sf::Event::EventType::KeyPressed) {
         if(event.key.code == sf::Keyboard::Escape) {
           running = false;
           win.close();
+          exit(1);
         }
       }
     }
@@ -131,18 +131,18 @@ void pandemic::render(){
     win.clear(sf::Color::Black);
 
     for(int i = 0; i < N_POINTS; i++){
-      
-      std::cout << "Huevada de SFML para el punto " << i << std::endl;
+
+      std::cout << "Huevada de SFML para el punto " << i << '\n';
 
       c1[i].setRadius(RADIUS);
       c1[i].setFillColor(sf::Color(100, 250, 50));
       c1[i].setPosition((float)points[i].get_position()[0]/1000,(float)points[i].get_position()[1]/1000);
-      //points[i].move(tiempo1->asSeconds());
+
+      // points[i].move(tiempo1->asSeconds());
 
       win.draw(c1[i]);
-
     }
-      win.display();
+    win.display();
 
     //mas huevadas supongo
 
