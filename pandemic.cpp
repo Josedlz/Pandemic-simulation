@@ -116,6 +116,7 @@ void pandemic::render(){
   while(win.isOpen()) {
     while(win.pollEvent(event)) {
       if(event.type == sf::Event::EventType::Closed)
+        running = false;
         win.close();
       if(event.type == sf::Event::EventType::KeyPressed) {
         if(event.key.code == sf::Keyboard::Escape) {
