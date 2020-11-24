@@ -49,15 +49,17 @@ double point::time_to_hit(point* other)
   return -(dvdr + sqrt(d)) / dvdv;
 }
 
-double point::time_to_hit_horizontal_wall()
-{//1.0 DISTANCIA A PARED VERTICAL
+double point::time_to_hit_vertical_wall()
+{
+  std::cout << "Vertical Wall\n";
   if      (v[0] > 0) return std::abs((WIDTH- r[0] - radius)) / v[0];
   else if (v[0] < 0) return std::abs((radius - r[0])) / v[0];
   else               return INF;
 }
 
-double point::time_to_hit_vertical_wall()
-{//1.0 DISTANCIA A PARED HORIZONTAL
+double point::time_to_hit_horizontal_wall()
+{
+  std::cout << "Horzontal Wall\n";
   if      (v[1] > 0) return std::abs((HEIGHT - r[1] - radius)) / v[1];
   else if (v[1] < 0) return std::abs((radius - r[1])) / v[1];
   else               return INF;
@@ -65,6 +67,7 @@ double point::time_to_hit_vertical_wall()
 
 void point::bounce_off(point* other)
 {
+  std::cout << "Bounce off Wall\n";
   vector_t dv = other->v - v;
   vector_t dr = other->r - r;
   double sigma = other->radius + radius;

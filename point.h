@@ -1,13 +1,13 @@
 #ifndef POINT_H
 #define POINT_H
 
-#define RADIUS 4
+#define RADIUS 2
 #define INF 1e9;
 /* Map dimensions */
 /* Number of points */
 #define N_POINTS 100
-#define WIDTH 800
-#define HEIGHT 600
+#define WIDTH 400
+#define HEIGHT 300
 #define DIM 1000
 
 #include "math.h"

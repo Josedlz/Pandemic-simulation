@@ -18,7 +18,7 @@ pandemic::pandemic()
   // **uniformly distributed** on the closed interval [0, 1].
   // (Note that the range is [inclusive, inclusive].)
   std::uniform_real_distribution<double> dist1{0.0, 100.0};//100.0 DEBERIA SER EL MIN DE HIGT Y WEGTH
-  std::uniform_real_distribution<double> dist2{0.0, 10};
+  std::uniform_real_distribution<double> dist2{0.0, 1000};
 
   // Generate pseudo-random number.
     for(int i = 0; i < N_POINTS; i++){ 
@@ -74,7 +74,6 @@ void pandemic::set_running(bool val)
 
 void pandemic::update()
 {
-
   for (int i = 0; i < N_POINTS; i++) 
   {
     predict(&points[i], limit);
@@ -82,77 +81,71 @@ void pandemic::update()
   //schedule.push(Event(0, nullptr, nullptr));        // redraw event
 
   // the main event-driven simulation loop
-  while(not schedule.empty() && running)
+  while(not schedule.empty() && win.isOpen())
   {
-      // get impending event, discard if invalidated
-      Event e = schedule.top();
-      schedule.pop();
-      if (e.get_invalidated()) continue;
-      point* a = e.get_a();
-      point* b = e.get_b();
+    // get impending event, discard if invalidated
+    Event e = schedule.top();
+    schedule.pop();
+    if (e.get_invalidated()) continue;
+    point* a = e.get_a();
+    point* b = e.get_b();
 
-      // physical collision, so update positions, and then simulation clock
-      for (int i = 0; i < N_POINTS; i++){
-        points[i].move(e.get_predicted_time() - timer);
-      }
-      timer = e.get_predicted_time();
+    // physical collision, so update positions, and then simulation clock
+    for (int i = 0; i < N_POINTS; i++){
+      points[i].move(e.get_predicted_time() - timer);
+    }
+    timer = e.get_predicted_time();
 
-      // process event
-      if      (a != nullptr && b != nullptr) a->bounce_off(b);        // particle-particle collision
-      else if (a != nullptr && b == nullptr) a->bounce_off_wall(0);   // particle-wall collision
-      else if (a == nullptr && b != nullptr) b->bounce_off_wall(1);   // particle-wall collision
-      else if (a == nullptr && b == nullptr) render();                // render event
-
-      // update the priority queue with new event involving a or b
-      predict(a, limit);
-      predict(b, limit);
+    // process event
+    if      (a != nullptr && b != nullptr) a->bounce_off(b);        // particle-particle collision
+    else if (a != nullptr && b == nullptr) a->bounce_off_wall(0);   // particle-wall collision
+    else if (a == nullptr && b != nullptr) b->bounce_off_wall(1);   // particle-wall collision
+    else if (a == nullptr && b == nullptr) render();
+    // update the priority queue with new event involving a or b
+    predict(a, limit);
+    predict(b, limit);
   }
   running = false;
 }
 
 void pandemic::render(){
-  while(win.isOpen()) {
-    while(win.pollEvent(event)) {
-      if(event.type == sf::Event::EventType::Closed) {
+  while(win.pollEvent(event)) {
+    if(event.type == sf::Event::EventType::Closed) {
+      running = false;
+      win.close();
+      exit(1);
+    }
+    if(event.type == sf::Event::EventType::KeyPressed) {
+      if(event.key.code == sf::Keyboard::Escape) {
         running = false;
         win.close();
         exit(1);
       }
-      if(event.type == sf::Event::EventType::KeyPressed) {
-        if(event.key.code == sf::Keyboard::Escape) {
-          running = false;
-          win.close();
-          exit(1);
-        }
-      }
     }
-
-    // Clear screen
-    win.clear(sf::Color::Black);
-
-    for(int i = 0; i < N_POINTS; i++){
-
-      std::cout << "Huevada de SFML para el punto " << i << '\n';
-
-      c1[i].setRadius(RADIUS);
-      c1[i].setFillColor(sf::Color(100, 250, 50));
-      c1[i].setPosition((float)points[i].get_position()[0]/1000,(float)points[i].get_position()[1]/1000);
-
-      // points[i].move(tiempo1->asSeconds());
-
-      win.draw(c1[i]);
-    }
-    win.display();
-
-    //mas huevadas supongo
-
-    /* Al final pusheamos un evento de render mas
-    para garantizar nuestro regreso dentro de 1 / HZ segundos*/
-    if(timer < limit) {
-        schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
-    }
-    *tiempo1 = reloj1->getElapsedTime();
   }
+  // Clear screen
+  win.clear(sf::Color::Black);
+
+  for(int i = 0; i < N_POINTS; i++){
+
+    std::cout << "Huevada de SFML para el punto " << i << '\n';
+
+    c1[i].setRadius(RADIUS);
+    c1[i].setFillColor(sf::Color(100, 250, 50));
+    c1[i].setPosition((float)points[i].get_position()[0]/1000,(float)points[i].get_position()[1]/1000);
+
+    win.draw(c1[i]);
+  }
+  win.display();
+
+  //mas huevadas supongo
+
+  /* Al final pusheamos un evento de render mas
+  para garantizar nuestro regreso dentro de 1 / HZ segundos*/
+  if(timer < limit) {
+      schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
+  }
+  *tiempo1 = reloj1->getElapsedTime();
 }
 
 void pandemic::set_window() {
