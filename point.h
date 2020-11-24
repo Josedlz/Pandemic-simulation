@@ -1,7 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
-#define RADIUS 8
+#define RADIUS 4
 #define INF 1e9;
 /* Map dimensions */
 /* Number of points */

@@ -126,21 +126,23 @@ void pandemic::render(){
         }
       }
     }
-    for(int i = 0; i < N_POINTS; i++){
-        //win.clear(sf::Color::Black);
 
+    // Clear screen
+    win.clear(sf::Color::Black);
+
+    for(int i = 0; i < N_POINTS; i++){
+      
       std::cout << "Huevada de SFML para el punto " << i << std::endl;
 
       c1[i].setRadius(RADIUS);
       c1[i].setFillColor(sf::Color(100, 250, 50));
-      // Clear screen
-      c1[i].setPosition(points[i].get_position()[0],points[i].get_position()[1]);
+      c1[i].setPosition((float)points[i].get_position()[0]/1000,(float)points[i].get_position()[1]/1000);
       //points[i].move(tiempo1->asSeconds());
 
       win.draw(c1[i]);
 
-      win.display();
     }
+      win.display();
 
     //mas huevadas supongo
 
