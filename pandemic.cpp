@@ -60,6 +60,7 @@ void pandemic::predict(point* a, double limit)
 
     /* render */
     schedule.push(Event(timer + 0.01, nullptr, nullptr));
+    std::cout << "kk "<< schedule.top().get_predicted_time() - timer << '\n';
 }
 
 bool pandemic::get_running() const
@@ -128,8 +129,6 @@ void pandemic::render(){
 
   for(int i = 0; i < N_POINTS; i++){
 
-    std::cout << "Huevada de SFML para el punto " << i << '\n';
-
     c1[i].setRadius(RADIUS);
     c1[i].setFillColor(sf::Color(100, 250, 50));
     c1[i].setPosition((float)points[i].get_position()[0]/1000,(float)points[i].get_position()[1]/1000);
@@ -137,8 +136,6 @@ void pandemic::render(){
     win.draw(c1[i]);
   }
   win.display();
-
-  //mas huevadas supongo
 
   /* Al final pusheamos un evento de render mas
   para garantizar nuestro regreso dentro de 1 / HZ segundos*/
