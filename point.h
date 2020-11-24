@@ -4,6 +4,10 @@
 #define RADIUS 8
 #define INF 1e9;
 /* Map dimensions */
+/* Number of points */
+#define N_POINTS 100
+#define WIDTH 800
+#define HEIGHT 600
 #define DIM 1000
 
 #include "math.h"

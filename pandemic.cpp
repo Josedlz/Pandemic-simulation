@@ -17,7 +17,7 @@ pandemic::pandemic()
   // 'Filter' MT engine's output to generate pseudo-random double values,
   // **uniformly distributed** on the closed interval [0, 1].
   // (Note that the range is [inclusive, inclusive].)
-  std::uniform_real_distribution<double> dist1{0.0, 100.0};
+  std::uniform_real_distribution<double> dist1{0.0, 100.0};//100.0 DEBERIA SER EL MIN DE HIGT Y WEGTH
   std::uniform_real_distribution<double> dist2{0.0, 10};
 
   // Generate pseudo-random number.
@@ -125,7 +125,7 @@ void pandemic::render(){
       }
     }
     for(int i = 0; i < N_POINTS; i++){
-        win.clear(sf::Color::Black);
+        //win.clear(sf::Color::Black);
 
       std::cout << "Huevada de SFML para el punto " << i << std::endl;
 
@@ -133,7 +133,7 @@ void pandemic::render(){
       c1[i].setFillColor(sf::Color(100, 250, 50));
       // Clear screen
       c1[i].setPosition(points[i].get_position()[0],points[i].get_position()[1]);
-      points[i].move(tiempo1->asSeconds());
+      //points[i].move(tiempo1->asSeconds());
 
       win.draw(c1[i]);
 

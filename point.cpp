@@ -50,17 +50,17 @@ double point::time_to_hit(point* other)
   return -(dvdr + sqrt(d)) / dvdv;
 }
 
-double point::time_to_hit_vertical_wall()
-{
-  if      (v[0] > 0) return (1.0 - r[0] - radius) / v[0];
-  else if (v[0] < 0) return (radius - r[0]) / v[0];  
+double point::time_to_hit_horizontal_wall()
+{//1.0 DISTANCIA A PARED VERTICAL
+  if      (v[0] > 0) return std::abs((WIDTH- r[0] - radius)) / v[0];
+  else if (v[0] < 0) return std::abs((radius - r[0])) / v[0];
   else               return INF;
 }
 
-double point::time_to_hit_horizontal_wall()
-{
-  if      (v[1] > 0) return (1.0 - r[1] - radius) / v[1];
-  else if (v[1] < 0) return (radius - r[1]) / v[1];
+double point::time_to_hit_vertical_wall()
+{//1.0 DISTANCIA A PARED HORIZONTAL
+  if      (v[1] > 0) return std::abs((HEIGHT - r[1] - radius)) / v[1];
+  else if (v[1] < 0) return std::abs((radius - r[1])) / v[1];
   else               return INF;
 }
 

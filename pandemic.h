@@ -9,10 +9,6 @@
 #include <random>
 #include "point.h"
 #include "event.h"
-/* Number of points */
-#define N_POINTS 100
-#define WIDTH 800
-#define HEIGHT 600
 
 /* Number of renderizations per clock tick */
 #define HZ 0.5
@@ -34,7 +30,7 @@ class pandemic{
   bool running;
 
   /* Represens scenario of the simulation */
-  // int scene[DIM][DIM];
+  int scene[WIDTH][HEIGHT];
 
   /* Limit for the simulation */
   double limit = 10000;
