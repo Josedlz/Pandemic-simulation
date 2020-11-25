@@ -29,9 +29,6 @@ pandemic::pandemic()
       points[i] = point(x, y, vx, vy);
     }
 
-    reloj1 = new sf::Clock();
-
-    tiempo1 = new sf::Time();
 }
 
 pandemic::~pandemic()
@@ -85,7 +82,7 @@ void pandemic::predict(point* a, double limit)
     }
 
     /* render */
-    schedule.push(Event(timer + 0.01, nullptr, nullptr)); //--->borrar?
+    schedule.push(Event(timer + (1/HZ), nullptr, nullptr)); //--->borrar?
     std::cout << "siguiente tiempo para evento de renderizacion "<< schedule.top().get_predicted_time() - timer << '\n';
 
     point* xx = schedule.top().get_a();
@@ -133,8 +130,8 @@ void pandemic::update()
 
     // process event
     if      (a != nullptr && b != nullptr) a->bounce_off(b);        // particle-particle collision
-    else if (a != nullptr && b == nullptr) a->bounce_off_wall(0);   // particle-wall collision
-    else if (a == nullptr && b != nullptr) b->bounce_off_wall(1);   // particle-wall collision
+    else if (a != nullptr && b == nullptr) a->bounce_off_wall(0);   // particle-vertical-wall collision
+    else if (a == nullptr && b != nullptr) b->bounce_off_wall(1);   // particle-horizontal-wall collision
     else if (a == nullptr && b == nullptr) render();
     // update the priority queue with new event involving a or b
     predict(a, limit);
@@ -159,9 +156,6 @@ void pandemic::render(){
   win.clear(sf::Color::Black);
 
   for(int i = 0; i < N_POINTS; i++){
-
-    c1[i].setRadius(2);
-    c1[i].setFillColor(sf::Color(50, 250, 50));
     c1[i].setPosition((float)points[i].get_position()[0],(float)points[i].get_position()[1]);
 
     win.draw(c1[i]);
@@ -174,11 +168,15 @@ void pandemic::render(){
       std::cout << "Timestamp render event " << timer + 1.0 / HZ << std::endl;
       schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
   }
-  *tiempo1 = reloj1->getElapsedTime();
 }
 
 void pandemic::set_window() {
   win.create(sf::VideoMode(WIDTH, HEIGHT), "P01nts S1mul4t10n", sf::Style::Default);
 
   sf::Vector2u size = win.getSize();
+
+    for(int i = 0; i < N_POINTS; i++){
+        c1[i].setRadius(1);
+        c1[i].setFillColor(sf::Color(50, 250, 50));
+    }
 }

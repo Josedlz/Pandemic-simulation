@@ -31,7 +31,7 @@ class vector_t{
         friend vector_t operator* (const double& number, const vector_t& other);
         friend vector_t operator* (const vector_t& other, const double& number);
         friend vector_t operator/ (const vector_t& other, const double& number);
-	      friend std::ostream& operator<< (std::ostream& stream, const vector_t& other);
+        friend std::ostream& operator<< (std::ostream& stream, const vector_t& other);
 };
 
 inline vector_t operator* (const double& number, const vector_t& other){

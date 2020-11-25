@@ -4,7 +4,7 @@
 #define INF 1e9;
 /* Map dimensions */
 /* Number of points */
-#define N_POINTS 10
+#define N_POINTS 4
 #define WIDTH 400
 #define HEIGHT 300
 #define DIM 1000
@@ -21,7 +21,7 @@ class point{
   /* Velocity vector: v = {dx, dy} */
   vector_t v;
 
-  int radius = 2;
+  int radius = 1;
 
   /* Count of collisions so far for this particle */
   int count;

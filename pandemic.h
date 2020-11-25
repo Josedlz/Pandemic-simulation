@@ -43,9 +43,6 @@ class pandemic{
   //Particulas
   sf::CircleShape *c1= new sf::CircleShape[N_POINTS];
 
-  sf::Clock *reloj1;
-  sf::Time *tiempo1;
-
   public:
     /* Constructor: sets everything for
     the first time */
