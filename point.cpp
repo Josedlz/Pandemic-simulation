@@ -22,18 +22,16 @@ void point::move(double dt)
   r = r + dt * v;
 }
 
-void point::update(double vx, double vy)
-{
-  v = {vx, vy};
-}
-
 double point::time_to_hit(point* other)
 {
   if (this == other) return INF;
+  if(r[0] < 0 or r[0] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
   assert(r[0] >= 0 && r[0] <= WIDTH);
+  if(r[1] < 0 or r[1] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
   assert(r[1] >= 0 && r[1] <= HEIGHT);
   if(other->r[0] < 0 or other->r[0] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
   assert(other->r[0] >= 0 && other->r[0] <= WIDTH);
+  if(other->r[1] < 0 or other->r[1] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
   assert(other->r[1] >= 0 && other->r[1] <= HEIGHT);
 
   vector_t dr = other->r - r;
@@ -69,17 +67,17 @@ double point::time_to_hit(point* other)
 double point::time_to_hit_vertical_wall()
 {
   std::cout << "Vertical Wall\n";
-  if      (v[0] > 0) return std::abs((WIDTH/10.0- r[0] - radius)) / v[0];
-  else if (v[0] < 0) return std::abs((radius - r[0])) / v[0];
-  else               return INF;
+  if      (v[0] > 0) return (WIDTH - r[0] - radius) / v[0];
+  else if (v[0] < 0) return (radius - r[0]) / v[0];
+  return INF;
 }
 
 double point::time_to_hit_horizontal_wall()
 {
   std::cout << "Horzontal Wall\n";
-  if      (v[1] > 0) return std::abs((HEIGHT/10.0 - r[1] - radius)) / v[1];
-  else if (v[1] < 0) return std::abs((radius - r[1])) / v[1];
-  else               return INF;
+  if      (v[1] > 0) return (HEIGHT - r[1] - radius) / v[1];
+  else if (v[1] < 0) return (radius - r[1]) / v[1];
+  return INF;
 }
 
 void point::bounce_off(point* other)

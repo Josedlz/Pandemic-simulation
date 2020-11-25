@@ -4,7 +4,7 @@
 #define INF 1e9;
 /* Map dimensions */
 /* Number of points */
-#define N_POINTS 100
+#define N_POINTS 10
 #define WIDTH 400
 #define HEIGHT 300
 #define DIM 1000
@@ -26,9 +26,6 @@ class point{
   /* Count of collisions so far for this particle */
   int count;
 
-  /* Updates point's vector of velocity */
-  void update(double dx, double dy);
-	
 	// TODO: Include states HEALTHY, INFECTED, RECOVERED
   int status;
   

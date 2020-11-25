@@ -11,7 +11,7 @@
 #include "event.h"
 
 /* Number of renderizations per clock tick */
-#define HZ 0.5
+#define HZ 2
 
 struct comparator{
   bool operator()(Event& e1, Event& e2)

@@ -171,7 +171,7 @@ void pandemic::render(){
   /* Al final pusheamos un evento de render mas
   para garantizar nuestro regreso dentro de 1 / HZ segundos*/
   if(timer < limit) {
-      std::cout << "Render " << timer + 1.0 / HZ << std::endl;
+      std::cout << "Timestamp render event " << timer + 1.0 / HZ << std::endl;
       schedule.push(Event(timer + 1.0 / HZ, nullptr, nullptr));
   }
   *tiempo1 = reloj1->getElapsedTime();
