@@ -7,8 +7,11 @@
 #include <queue>
 #include <vector>
 #include <random>
+#include <array>
 #include "point.h"
 #include "event.h"
+
+using std::array;
 
 /* Number of renderizations per clock tick */
 constexpr double HZ = 0.5;
@@ -32,12 +35,14 @@ class pandemic
   bool running;
 
   /* Represens scenario of the simulation */
-  int scene[WIDTH][HEIGHT];
+  //int scene[WIDTH][HEIGHT];
+  array<array<int, HEIGHT>, WIDTH> scene;
 
   /* Limit for the simulation */
   double limit = 10000;
 
-  point *points = new point[N_POINTS];
+  //point *points = new point[N_POINTS];
+  array<point, N_POINTS> points;
 
   void predict(point *a, double limit);
 
