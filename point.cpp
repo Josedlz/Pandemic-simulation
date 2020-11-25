@@ -103,25 +103,6 @@ void point::bounce_off(point* other)
   ++other->count;
 }
 
-void point::bounce_off_vertical_wall()
-{
-  /* Invert velocity's vertical component */
-  v[0] = -v[0];
-  
-  /* Increment collision count */
-  ++count;
-}
-
-void point::bounce_off_horizontal_wall()
-{
-  /* Invert velocity's horizontal component */
-  v[1] = -v[1];
-
-  /* Increment collision count */
-  ++count;
-}
-
-
 int point::get_count()
 {
   return count;

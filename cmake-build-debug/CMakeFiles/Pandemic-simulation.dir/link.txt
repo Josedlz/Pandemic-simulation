@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/Pandemic-simulation.dir/main.cpp.o CMakeFiles/Pandemic-simulation.dir/event.cpp.o CMakeFiles/Pandemic-simulation.dir/pandemic.cpp.o CMakeFiles/Pandemic-simulation.dir/point.cpp.o CMakeFiles/Pandemic-simulation.dir/wall.cpp.o  -o Pandemic-simulation  -lsfml-system -lsfml-window -lsfml-graphics -static 

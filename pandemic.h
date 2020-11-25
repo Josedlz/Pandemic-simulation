@@ -11,7 +11,7 @@
 #include "event.h"
 
 /* Number of renderizations per clock tick */
-#define HZ 2
+#define HZ 1
 
 struct comparator{
   bool operator()(Event& e1, Event& e2)
@@ -26,11 +26,8 @@ class pandemic{
   /* Time counter */
   double timer;
 
-  /* Represens scenario of the simulation */
-  int scene[WIDTH][HEIGHT];
-
   /* Limit for the simulation */
-  double limit = 100;
+  double limit = 10000;
 
   point* points = new point[N_POINTS];
 

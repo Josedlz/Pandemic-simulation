@@ -85,7 +85,7 @@ void pandemic::predict(point* a, double limit)
     }
 
     /* render */
-    schedule.push(Event(timer + 0.01, nullptr, nullptr));
+    schedule.push(Event(timer + 0.01, nullptr, nullptr)); //--->borrar?
     std::cout << "siguiente tiempo para evento de renderizacion "<< schedule.top().get_predicted_time() - timer << '\n';
 
     point* xx = schedule.top().get_a();
@@ -161,8 +161,8 @@ void pandemic::render(){
   for(int i = 0; i < N_POINTS; i++){
 
     c1[i].setRadius(2);
-    c1[i].setFillColor(sf::Color(100, 250, 50));
-    c1[i].setPosition((float)points[i].get_position()[0]/500,(float)points[i].get_position()[1]/500);
+    c1[i].setFillColor(sf::Color(50, 250, 50));
+    c1[i].setPosition((float)points[i].get_position()[0],(float)points[i].get_position()[1]);
 
     win.draw(c1[i]);
   }

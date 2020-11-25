@@ -1,10 +1,12 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/simulator.dir/event.cpp.o"
-  "CMakeFiles/simulator.dir/main.cpp.o"
-  "CMakeFiles/simulator.dir/pandemic.cpp.o"
-  "CMakeFiles/simulator.dir/point.cpp.o"
-  "CMakeFiles/simulator.dir/wall.cpp.o"
-  "simulator"
+  "CMakeFiles/simulator.dir/event.cpp.obj"
+  "CMakeFiles/simulator.dir/main.cpp.obj"
+  "CMakeFiles/simulator.dir/pandemic.cpp.obj"
+  "CMakeFiles/simulator.dir/point.cpp.obj"
+  "CMakeFiles/simulator.dir/wall.cpp.obj"
+  "libsimulator.dll.a"
+  "simulator.exe"
+  "simulator.exe.manifest"
   "simulator.pdb"
 )
 

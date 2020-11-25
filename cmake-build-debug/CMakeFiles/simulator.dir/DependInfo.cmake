@@ -4,17 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jose/CLionProjects/simulator/event.cpp" "/home/jose/CLionProjects/simulator/cmake-build-debug/CMakeFiles/simulator.dir/event.cpp.o"
-  "/home/jose/CLionProjects/simulator/main.cpp" "/home/jose/CLionProjects/simulator/cmake-build-debug/CMakeFiles/simulator.dir/main.cpp.o"
-  "/home/jose/CLionProjects/simulator/pandemic.cpp" "/home/jose/CLionProjects/simulator/cmake-build-debug/CMakeFiles/simulator.dir/pandemic.cpp.o"
-  "/home/jose/CLionProjects/simulator/point.cpp" "/home/jose/CLionProjects/simulator/cmake-build-debug/CMakeFiles/simulator.dir/point.cpp.o"
-  "/home/jose/CLionProjects/simulator/wall.cpp" "/home/jose/CLionProjects/simulator/cmake-build-debug/CMakeFiles/simulator.dir/wall.cpp.o"
+  "C:/Users/ACER/Documents/Pandemic-simulation/event.cpp" "C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/CMakeFiles/simulator.dir/event.cpp.obj"
+  "C:/Users/ACER/Documents/Pandemic-simulation/main.cpp" "C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/CMakeFiles/simulator.dir/main.cpp.obj"
+  "C:/Users/ACER/Documents/Pandemic-simulation/pandemic.cpp" "C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/CMakeFiles/simulator.dir/pandemic.cpp.obj"
+  "C:/Users/ACER/Documents/Pandemic-simulation/point.cpp" "C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/CMakeFiles/simulator.dir/point.cpp.obj"
+  "C:/Users/ACER/Documents/Pandemic-simulation/wall.cpp" "C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/CMakeFiles/simulator.dir/wall.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/jose/DevLibraries/SFML-2.5.1/include"
+  "../~/DevLibraries/SFML-2.5.1/include"
+  "C:/mingw32/include"
   )
 
 # Targets to which this target links.
