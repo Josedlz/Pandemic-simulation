@@ -47,19 +47,22 @@ double point::time_to_hit(point* other)
   double sigma = radius + other->radius;
   double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
   if(drdr < sigma*sigma) {
-    std::cout << "#####################SEÑALIZADOR####################" << '\n';
+    std::cout << "#####################SEÑALIZADOR PARTICULAS SOBRELAPADAS####################" << '\n';
     std::cout << r << '\n';
     std::cout << v << '\n';
+    std::cout << "y" << std::endl;
+    std::cout << other->r << '\n';
+    std::cout << other->v << '\n';
   }
   if (d < 0)         return INF;
 
 
   auto ret = -(dvdr + sqrt(d)) / dvdv;
   if(ret < 0){
+    std::cout << "#####################SEÑALIZADOR DT NEGATIVO####################" << '\n';
     std::cout << "CAUSANTE DEL DT NEGATIVO" << "\n";
     std::cout << other->r << '\n';
     std::cout << other->v << '\n';
-    std::cout << "#####################SEÑALIZADOR####################" << '\n';
   }
   return ret;
 }
@@ -83,17 +86,17 @@ double point::time_to_hit_horizontal_wall()
 void point::bounce_off(point* other)
 {
   std::cout << "Bounce off Wall\n";
-  vector_t dv = other->v - v;
   vector_t dr = other->r - r;
-  double sigma = other->radius + radius;
-  double J = (dv.dot(dr)) / sigma;
-
-  /* Impulse vector */
-  vector_t j = (J / sigma) * r;
-
-  /* Update velocities for each particle */
-  v = v + j;
-  other->v = v - j;
+  vector_t dv = other->v - v;
+  double dvdr = dv.dot(dr);
+  double dist = other->radius + radius;
+  
+  double magnitude = dvdr / dist;
+  
+  vector_t f = (magnitude * dr) / dist;
+  
+  v = v + f;
+  other->v = other->v - f;
 
   /* Increment collision count for both particles */
   ++count;

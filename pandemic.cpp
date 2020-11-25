@@ -16,7 +16,7 @@ pandemic::pandemic()
   // 'Filter' MT engine's output to generate pseudo-random double values,
   // **uniformly distributed** on the closed interval [0, 1].
   // (Note that the range is [inclusive, inclusive].)
-  std::uniform_real_distribution<double> dist1{0.0, std::min(HEIGHT, WIDTH)};//100.0 DEBERIA SER EL MIN DE HIGT Y WEGTH
+  std::uniform_real_distribution<double> dist1{0.0, std::min(HEIGHT, WIDTH)};
   std::uniform_real_distribution<double> dist2{0.0, 10};
 
   // Generate pseudo-random number.
