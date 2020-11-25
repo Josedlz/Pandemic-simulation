@@ -1,0 +1,5 @@
+/opt/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jose/CLionProjects/simulator
+-- Found SFML 2.5.1 in /home/jose/DevLibraries/SFML-2.5.1/lib/cmake/SFML
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jose/CLionProjects/simulator/cmake-build-debug

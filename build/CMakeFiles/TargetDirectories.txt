@@ -1,0 +1,3 @@
+/home/jose/CLionProjects/simulator/build/CMakeFiles/rebuild_cache.dir
+/home/jose/CLionProjects/simulator/build/CMakeFiles/edit_cache.dir
+/home/jose/CLionProjects/simulator/build/CMakeFiles/simulator.dir
