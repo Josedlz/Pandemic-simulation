@@ -4,7 +4,7 @@
 #define INF 1e9;
 /* Map dimensions */
 /* Number of points */
-#define N_POINTS 4
+#define N_POINTS 10
 #define WIDTH 400
 #define HEIGHT 300
 #define DIM 1000
