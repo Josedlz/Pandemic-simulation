@@ -176,7 +176,7 @@ void pandemic::set_window() {
   sf::Vector2u size = win.getSize();
 
     for(int i = 0; i < N_POINTS; i++){
-        c1[i].setRadius(1);
+        c1[i].setRadius(RADIUS);
         c1[i].setFillColor(sf::Color(50, 250, 50));
     }
 }
