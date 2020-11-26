@@ -18,41 +18,39 @@ pandemic::pandemic()
   // (Note that the range is [inclusive, inclusive].)
   std::uniform_real_distribution<double> dist1{0.0, std::min(HEIGHT, WIDTH)};
   std::uniform_real_distribution<double> dist2{0.0, 10};
+  std::unordered_map<std::string, bool> mp;
 
   // Generate pseudo-random number.
     for(int i = 0; i < N_POINTS; i++){ 
       double x = dist1(engine);
       double y = dist1(engine);
-
       double vx = dist2(engine);
       double vy = dist2(engine);
       points[i] = point(x, y, vx, vy);
+      points[i].set_id(i);
     }
-
 }
-
 pandemic::~pandemic()
 {
   delete [] points;
+  delete [] c1;
 }
 
 void pandemic::predict(point* a, double limit)
 {
   if (a == nullptr) return;
+  std::cout << "Predicting for point " << a->get_id() << "\n";
 
     /* point-point collisions */
     for (int i = 0; i < N_POINTS; i++) 
     {
       double dt = a->time_to_hit(&points[i]);
-
-      //assert(dt > 0);
-
+      if(dt == -1) continue;
       if (timer + dt <= limit) {
         auto evt = Event(timer + dt, a, &points[i]);
         if (evt.get_predicted_time() < 0)
         {
           std::cout << "agendada colision negativa con punto\n";
-          //std::cin.get();
         }
         schedule.push(Event(timer + dt, a, &points[i]));
       }
@@ -63,31 +61,25 @@ void pandemic::predict(point* a, double limit)
     double dtH = a->time_to_hit_horizontal_wall();
 
     if (timer + dtV <= limit) {
-      auto evt = Event(timer + dtV, a, nullptr);
+      auto evt = Event(timer + dtV, nullptr, a);
       if (evt.get_predicted_time() < 0)
       {
         std::cout << "agendada colision negativa con pared vertical\n";
-        // chequea algo aca, yo que se
       }
       schedule.push(Event(timer + dtV, a, nullptr));
     }
     if (timer + dtH <= limit) {
-      auto evt = Event(timer + dtH, nullptr, a);
+      auto evt = Event(timer + dtH, a, nullptr);
       if (evt.get_predicted_time() < 0)
       {
         std::cout << "agendada colision negativa con pared horizontal\n";
-        // chequea algo aca, yo que se
       }
       schedule.push(Event(timer + dtH, nullptr, a));
     }
 
     /* render */
-    schedule.push(Event(timer + (1/HZ), nullptr, nullptr)); //--->borrar?
+    //schedule.push(Event(timer + (1/HZ), nullptr, nullptr)); //--->borrar?
     std::cout << "siguiente tiempo para evento de renderizacion "<< schedule.top().get_predicted_time() - timer << '\n';
-
-    point* xx = schedule.top().get_a();
-    point* xxx = schedule.top().get_b();
-    std::cout << (xx && xxx ? "Point to point" : xx && !xxx ? "V. Wall" : !xx && xxx ? "H. wall" : "Render") << " Event\n";
 }
 
 template <class ... Args>
@@ -109,7 +101,7 @@ void pandemic::update()
     std::cout << "Posicion inicial: " << points[i].get_position() << std::endl;
     predict(&points[i], limit);
   }
-  //schedule.push(Event(0, nullptr, nullptr));        // redraw event
+  schedule.push(Event(0, nullptr, nullptr));        // render event
 
   // the main event-driven simulation loop
   while(not schedule.empty() && win.isOpen())
@@ -126,6 +118,7 @@ void pandemic::update()
       points[i].move(e.get_predicted_time() - timer);
     }
     timer = e.get_predicted_time();
+    std::cout << "Imprimiendo cola para esta iteracion\n";
     print_queue(schedule);
 
     // process event
@@ -175,8 +168,8 @@ void pandemic::set_window() {
 
   sf::Vector2u size = win.getSize();
 
-    for(int i = 0; i < N_POINTS; i++){
-        c1[i].setRadius(RADIUS);
-        c1[i].setFillColor(sf::Color(50, 250, 50));
-    }
+  for(int i = 0; i < N_POINTS; i++){
+      c1[i].setRadius(RADIUS);
+      c1[i].setFillColor(sf::Color(50, 250, 50));
+  }
 }

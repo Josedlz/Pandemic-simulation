@@ -5,13 +5,15 @@
 
 #include <SFML/Graphics.hpp>
 #include <queue>
+#include <utility>
+#include <unordered_map>
 #include <vector>
 #include <random>
 #include "point.h"
 #include "event.h"
 
 /* Number of renderizations per clock tick */
-#define HZ 1
+#define HZ 0.5
 
 struct comparator{
   bool operator()(Event& e1, Event& e2)
@@ -24,10 +26,10 @@ struct comparator{
 class pandemic{
 
   /* Time counter */
-  double timer;
+  double timer = 0;
 
   /* Limit for the simulation */
-  double limit = 10000;
+  double limit = 100000;
 
   point* points = new point[N_POINTS];
 

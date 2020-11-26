@@ -14,6 +14,15 @@ point::point(double x , double y , double vx , double vy )
   v = {vx, vy};
 }
 
+
+void point::set_id(int x){
+  point_id = x;
+}
+
+int point::get_id(){
+  return point_id;
+}
+
 vector_t point::get_position() {
     return r;
 }
@@ -25,13 +34,13 @@ void point::move(double dt)
 double point::time_to_hit(point* other)
 {
   if (this == other) return INF;
-  if(r[0] < 0 or r[0] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
+  if(r[0] < 0 || r[0] > WIDTH) std::cout << "aca esta el cagon" << this->get_id()<< std::endl;
   assert(r[0] >= 0 && r[0] <= WIDTH);
-  if(r[1] < 0 or r[1] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
+  if(r[1] < 0 || r[1] > WIDTH) std::cout << "aca esta el cagon" << this->get_id() << std::endl;
   assert(r[1] >= 0 && r[1] <= HEIGHT);
-  if(other->r[0] < 0 or other->r[0] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
+  if(other->r[0] < 0 || other->r[0] > WIDTH) std::cout << "aca esta el cagon" << this->get_id() << std::endl;
   assert(other->r[0] >= 0 && other->r[0] <= WIDTH);
-  if(other->r[1] < 0 or other->r[1] > WIDTH) std::cout << "aca esta el cagon" << r << std::endl;
+  if(other->r[1] < 0 || other->r[1] > WIDTH) std::cout << "aca esta el cagon" << this->get_id() << std::endl;
   assert(other->r[1] >= 0 && other->r[1] <= HEIGHT);
 
   vector_t dr = other->r - r;
@@ -46,23 +55,20 @@ double point::time_to_hit(point* other)
   double drdr = dr.dot(dr);
   double sigma = radius + other->radius;
   double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
-  if(drdr < sigma*sigma) {
-    std::cout << "#####################SEÑALIZADOR PARTICULAS SOBRELAPADAS####################" << '\n';
-    std::cout << r << '\n';
-    std::cout << v << '\n';
-    std::cout << "y" << std::endl;
-    std::cout << other->r << '\n';
-    std::cout << other->v << '\n';
-  }
+  
   if (d < 0)         return INF;
 
-
-  auto ret = -(dvdr + sqrt(d)) / dvdv;
-  if(ret < 0){
-    std::cout << "#####################SEÑALIZADOR DT NEGATIVO####################" << '\n';
-    std::cout << "CAUSANTE DEL DT NEGATIVO" << "\n";
-    std::cout << other->r << '\n';
-    std::cout << other->v << '\n';
+  double ret = -(dvdr + sqrt(d)) / dvdv;
+  if(drdr < sigma*sigma) {
+    std::cout << "#####################SEÑALIZADOR PARTICULAS SOBRELAPADAS####################\n";
+    std::cout << "Between point " << this->get_id() << " and point " << other->get_id() << '\n';
+    if(ret < 0) std::cout << "#####################SEÑALIZADOR DT NEGATIVO####################\n";
+    std::cout << sqrt(drdr) << std::endl;
+    this->move(ret);
+    other->move(ret);
+    this->bounce_off(other);
+    std::cout << sqrt(drdr) << std::endl;
+    return -1;
   }
   return ret;
 }
@@ -85,7 +91,7 @@ double point::time_to_hit_horizontal_wall()
 
 void point::bounce_off(point* other)
 {
-  std::cout << "Bounce off Wall\n";
+  std::cout << "Bounce off\n";
   vector_t dr = other->r - r;
   vector_t dv = other->v - v;
   double dvdr = dv.dot(dr);
@@ -109,7 +115,9 @@ int point::get_count()
 }
 
 void point::bounce_off_wall(int dir){
+  std::cout << "Bounce wall" << std::endl;
   /* Invert velocity's component */
+  std::cout << "Bounce wall velocity" << v << std::endl;
   v[dir] = -v[dir];
 
   /* Increment collision count */

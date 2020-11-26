@@ -1,14 +1,14 @@
 #ifndef POINT_H
 #define POINT_H
 
-#define INF 1e9;
-/* Map dimensions */
+#define INF 1000000.0;
 /* Number of points */
-#define N_POINTS 10
+#define N_POINTS 1
 #define WIDTH 400
 #define HEIGHT 300
 #define RADIUS 2
 #define DIM 1000
+#define RADIUS 1
 
 #include "vector_t.h"
 #include <cmath>
@@ -16,14 +16,20 @@
 
 class point{
 
+  /* Point ID */
+  int point_id;
+
   /*Position vector */
   vector_t r;
 
   /* Velocity vector: v = {dx, dy} */
   vector_t v;
 
+<<<<<<< HEAD
   bool hit = false;
 
+=======
+>>>>>>> 6c76c10 (overlapping particles fixed? new bug)
   int radius = RADIUS;
 
   /* Count of collisions so far for this particle */
@@ -39,6 +45,12 @@ class point{
     
     /* Another constructor */
     point(double x, double y, double vx, double vy);
+    
+    /* Point ID setter */
+    void set_id(int x);
+
+    /* Point ID getter */
+    int get_id();
 
     /* Set point */
     [[maybe_unused]] void set_point(double x, double y, double vx, double vy);
