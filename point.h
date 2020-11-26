@@ -3,7 +3,7 @@
 
 #define INF 1000000.0
 /* Number of points */
-#define N_POINTS 10
+#define N_POINTS 2
 #define WIDTH 400
 #define HEIGHT 300
 #define RADIUS 2
@@ -45,10 +45,10 @@ class point{
     void set_id(int x);
 
     /* Point ID getter */
-    int get_id();
+    int get_id() const;
 
     /* Set point */
-    [[maybe_unused]] void set_point(double x, double y, double vx, double vy);
+    void set_point(double x, double y, double vx, double vy);
 
     vector_t get_position();
 

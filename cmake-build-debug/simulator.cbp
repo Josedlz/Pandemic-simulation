@@ -5,36 +5,36 @@
 		<Option title="simulator"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\mingw32\;CMake Files\..\..\..\..\mingw32\lib\;CMake Files\..\..\..\..\mingw32\lib\cmake\;CMake Files\..\..\..\..\mingw32\lib\cmake\SFML\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\mingw32\;CMake Files\..\..\..\..\..\mingw32\lib\;CMake Files\..\..\..\..\..\mingw32\lib\cmake\;CMake Files\..\..\..\..\..\mingw32\lib\cmake\SFML\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug"/>
+				<Option working_dir="C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug"/>
+				<Option working_dir="C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="simulator">
-				<Option output="C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/simulator.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug"/>
+				<Option output="C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/simulator.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/ACER/Documents/Pandemic-simulation/~/DevLibraries/SFML-2.5.1/include"/>
+					<Add directory="C:/Users/grace/Documents/poo/Pandemic-simulation/~/DevLibraries/SFML-2.5.1/include"/>
 					<Add directory="C:/mingw32/include"/>
 					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
 					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
@@ -44,20 +44,20 @@
 					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 simulator"/>
-					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 simulator"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="simulator/fast">
-				<Option output="C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/simulator.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug"/>
+				<Option output="C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/simulator.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/ACER/Documents/Pandemic-simulation/~/DevLibraries/SFML-2.5.1/include"/>
+					<Add directory="C:/Users/grace/Documents/poo/Pandemic-simulation/~/DevLibraries/SFML-2.5.1/include"/>
 					<Add directory="C:/mingw32/include"/>
 					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++"/>
 					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32"/>
@@ -67,70 +67,70 @@
 					<Add directory="C:/mingw32/bin/../lib/gcc/i686-w64-mingw32/7.3.0/../../../../i686-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 simulator/fast"/>
-					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 simulator/fast"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug"/>
+				<Option working_dir="C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/ACER/Documents/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/grace/Documents/poo/Pandemic-simulation/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/event.cpp">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/event.cpp">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/event.h">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/event.h">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/main.cpp">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/main.cpp">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/pandemic.cpp">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/pandemic.cpp">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/pandemic.h">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/pandemic.h">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/point.cpp">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/point.cpp">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/point.h">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/point.h">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/wall.cpp">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/wall.cpp">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/wall.h">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/wall.h">
 			<Option target="simulator"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/CMakeLists.txt">
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/../../../../mingw32/lib/cmake/SFML/SFMLConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\mingw32\lib\cmake\SFML\"/>
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/../../../../../mingw32/lib/cmake/SFML/SFMLConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\mingw32\lib\cmake\SFML\"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/../../../../mingw32/lib/cmake/SFML/SFMLConfigDependencies.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\mingw32\lib\cmake\SFML\"/>
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/../../../../../mingw32/lib/cmake/SFML/SFMLConfigDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\mingw32\lib\cmake\SFML\"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/../../../../mingw32/lib/cmake/SFML/SFMLConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\mingw32\lib\cmake\SFML\"/>
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/../../../../../mingw32/lib/cmake/SFML/SFMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\mingw32\lib\cmake\SFML\"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/../../../../mingw32/lib/cmake/SFML/SFMLSharedTargets-debug.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\mingw32\lib\cmake\SFML\"/>
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/../../../../../mingw32/lib/cmake/SFML/SFMLSharedTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\mingw32\lib\cmake\SFML\"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/../../../../mingw32/lib/cmake/SFML/SFMLSharedTargets-release.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\mingw32\lib\cmake\SFML\"/>
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/../../../../../mingw32/lib/cmake/SFML/SFMLSharedTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\mingw32\lib\cmake\SFML\"/>
 		</Unit>
-		<Unit filename="C:/Users/ACER/Documents/Pandemic-simulation/../../../../mingw32/lib/cmake/SFML/SFMLSharedTargets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\mingw32\lib\cmake\SFML\"/>
+		<Unit filename="C:/Users/grace/Documents/poo/Pandemic-simulation/../../../../../mingw32/lib/cmake/SFML/SFMLSharedTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\mingw32\lib\cmake\SFML\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

@@ -10,18 +10,17 @@ point::point(double x , double y , double vx , double vy )
   point_shape.setFillColor(sf::Color(50, 250, 50));
 }
 
-[[maybe_unused]] void point::set_point(double x, double y, double vx , double vy)
+void point::set_point(double x, double y, double vx , double vy)
 {
   r = {x, y};
   v = {vx, vy};
 }
 
-
 void point::set_id(int x){
   point_id = x;
 }
 
-int point::get_id(){
+int point::get_id() const{
   return point_id;
 }
 
@@ -86,7 +85,7 @@ double point::time_to_hit_vertical_wall()
 
 double point::time_to_hit_horizontal_wall()
 {
-  std::cout << "Horzontal Wall\n";
+  std::cout << "Horizontal Wall\n";
   if      (v[1] > 0) return (HEIGHT - r[1] - radius) / v[1];
   else if (v[1] < 0) return (radius - r[1]) / v[1];
   return INF;
@@ -94,7 +93,8 @@ double point::time_to_hit_horizontal_wall()
 
 void point::bounce_off(point* other)
 {
-  std::cout << "Bounce off\n";
+  std::cout << "before bounce off point 1 " << this->get_id() << " velocity is: " << v << std::endl;
+  std::cout << "before bounce off point 2 " << other->get_id() << " velocity is: " << other->v << std::endl;
   vector_t dr = other->r - r;
   vector_t dv = other->v - v;
   double dvdr = dv.dot(dr);
@@ -110,6 +110,8 @@ void point::bounce_off(point* other)
   /* Increment collision count for both particles */
   ++count;
   ++other->count;
+  std::cout << "after bounce off point 1 " << this->get_id() << " velocity is: " << v << std::endl;
+  std::cout << "after bounce off point 2 " << other->get_id() << " velocity is: " << other->v << std::endl;
 }
 
 int point::get_count()
@@ -120,7 +122,7 @@ int point::get_count()
 void point::bounce_off_wall(int dir){
   std::cout << "Bounce wall" << std::endl;
   /* Invert velocity's component */
-  std::cout << "Bounce wall velocity" << v << std::endl;
+  std::cout << "Bounce wall for point " << this->get_id() << " velocity is: " << v << std::endl;
   v[dir] = -v[dir];
 
   /* Increment collision count */

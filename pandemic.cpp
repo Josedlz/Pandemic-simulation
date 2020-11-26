@@ -17,7 +17,7 @@ pandemic::pandemic()
   // **uniformly distributed** on the closed interval [0, 1].
   // (Note that the range is [inclusive, inclusive].)
   std::uniform_real_distribution<double> dist1{0.0, std::min(HEIGHT, WIDTH)};
-  std::uniform_real_distribution<double> dist2{0.0, 10};
+  std::uniform_real_distribution<double> dist2{0.0, 1};
   std::unordered_map<std::string, bool> mp;
 
   // Generate pseudo-random number.
@@ -33,7 +33,6 @@ pandemic::pandemic()
 pandemic::~pandemic()
 {
   delete [] points;
-  delete [] c1;
 }
 
 void pandemic::predict(point* a, double limit)
@@ -81,6 +80,7 @@ void pandemic::predict(point* a, double limit)
     /* render */
     //schedule.push(Event(timer + (1/HZ), nullptr, nullptr)); //--->borrar?
     std::cout << "siguiente tiempo para evento de renderizacion "<< schedule.top().get_predicted_time() - timer << '\n';
+    std::cout << "##########################################################\n";
 }
 
 template <class ... Args>
@@ -91,13 +91,14 @@ void print_queue (std::priority_queue<Args...> queue)
         std::cout << queue.top().get_predicted_time() << " ";
         queue.pop();
     }
-    std::cout << "aca acaba\n";
+    std::cout << "\n##########################################################\n";
 }
 
 void pandemic::update()
 {
   for (int i = 0; i < N_POINTS; i++) 
   {
+    std::cout << "##########################################################\n";
     std::cout << "INITIALS: prediciendo para el punto " << i << std::endl;
     std::cout << "Posicion inicial: " << points[i].get_position() << std::endl;
     predict(&points[i], limit);
@@ -119,6 +120,7 @@ void pandemic::update()
       points[i].move(e.get_predicted_time() - timer);
     }
     timer = e.get_predicted_time();
+    std::cout << "##########################################################\n";
     std::cout << "Imprimiendo cola para esta iteracion\n";
     print_queue(schedule);
 
@@ -167,9 +169,4 @@ void pandemic::set_window() {
   win.create(sf::VideoMode(WIDTH, HEIGHT), "P01nts S1mul4t10n", sf::Style::Default);
 
   sf::Vector2u size = win.getSize();
-
-  for(int i = 0; i < N_POINTS; i++){
-      c1[i].setRadius(RADIUS);
-      c1[i].setFillColor(sf::Color(50, 250, 50));
-  }
 }
