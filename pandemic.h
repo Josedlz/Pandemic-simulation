@@ -40,8 +40,6 @@ class pandemic{
   sf::RenderWindow win;
   // Event
   sf::Event event;
-  //Particulas
-  sf::CircleShape *c1= new sf::CircleShape[N_POINTS];
 
   public:
     /* Constructor: sets everything for

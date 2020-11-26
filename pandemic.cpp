@@ -156,9 +156,7 @@ void pandemic::render(){
   win.clear(sf::Color::Black);
 
   for(int i = 0; i < N_POINTS; i++){
-    c1[i].setPosition((float)points[i].get_position()[0],(float)points[i].get_position()[1]);
-
-    win.draw(c1[i]);
+    win.draw(points[i].point_shape);//dibujar los puntos (se mueven deacuerdo a move)
   }
   win.display();
 
@@ -174,9 +172,4 @@ void pandemic::set_window() {
   win.create(sf::VideoMode(WIDTH, HEIGHT), "P01nts S1mul4t10n", sf::Style::Default);
 
   sf::Vector2u size = win.getSize();
-
-    for(int i = 0; i < N_POINTS; i++){
-        c1[i].setRadius(1);
-        c1[i].setFillColor(sf::Color(50, 250, 50));
-    }
 }
