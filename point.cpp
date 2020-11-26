@@ -6,6 +6,8 @@ point::point(double x , double y , double vx , double vy )
   count = 0;
   r = {x, y};
   v = {vx, vy};
+  point_shape.setRadius(radius);
+  point_shape.setFillColor(sf::Color(50, 250, 50));
 }
 
 [[maybe_unused]] void point::set_point(double x, double y, double vx , double vy)
@@ -29,6 +31,7 @@ vector_t point::get_position() {
 void point::move(double dt)
 {
   r = r + dt * v;
+  point_shape.setPosition((float)get_position()[0],(float)get_position()[1]);
 }
 
 double point::time_to_hit(point* other)

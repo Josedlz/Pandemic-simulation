@@ -48,6 +48,7 @@ void pandemic::predict(point* a, double limit)
       if(dt == -1) continue;
       if (timer + dt <= limit) {
         auto evt = Event(timer + dt, a, &points[i]);
+        points[i].point_shape.setFillColor(sf::Color(255,0,0));
         if (evt.get_predicted_time() < 0)
         {
           std::cout << "agendada colision negativa con punto\n";
@@ -149,9 +150,8 @@ void pandemic::render(){
   win.clear(sf::Color::Black);
 
   for(int i = 0; i < N_POINTS; i++){
-    c1[i].setPosition((float)points[i].get_position()[0],(float)points[i].get_position()[1]);
-
-    win.draw(c1[i]);
+    win.draw(points[i].point_shape);//dibujar los puntos (se mueven deacuerdo a move() de point)
+    points[i].point_shape.setFillColor(sf::Color(50, 250, 50));
   }
   win.display();
 

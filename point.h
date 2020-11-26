@@ -10,6 +10,7 @@
 #include "vector_t.h"
 #include <cmath>
 #include <cassert>
+#include "SFML/Graphics.hpp"
 
 class point{
 
@@ -31,7 +32,7 @@ class point{
 
 	// TODO: Include states HEALTHY, INFECTED, RECOVERED
   int status;
-  
+
   public:
 
     /* Constructor */
@@ -78,6 +79,8 @@ class point{
 
     /* bounce_off_wall */
     void bounce_off_wall(int dir);
+
+    sf::CircleShape point_shape;
 };
 
 #endif
