@@ -66,7 +66,7 @@ void pandemic::predict(point* a, double limit)
       {
         std::cout << "agendada colision negativa con pared vertical\n";
       }
-      schedule.push(Event(timer + dtV, a, nullptr));
+      schedule.push(Event(timer + dtV, nullptr, a));
     }
     if (timer + dtH <= limit) {
       auto evt = Event(timer + dtH, a, nullptr);
@@ -74,7 +74,7 @@ void pandemic::predict(point* a, double limit)
       {
         std::cout << "agendada colision negativa con pared horizontal\n";
       }
-      schedule.push(Event(timer + dtH, nullptr, a));
+      schedule.push(Event(timer + dtH, a, nullptr));
     }
 
     /* render */
@@ -123,8 +123,8 @@ void pandemic::update()
 
     // process event
     if      (a != nullptr && b != nullptr) a->bounce_off(b);        // particle-particle collision
-    else if (a != nullptr && b == nullptr) a->bounce_off_wall(0);   // particle-vertical-wall collision
-    else if (a == nullptr && b != nullptr) b->bounce_off_wall(1);   // particle-horizontal-wall collision
+    else if (a != nullptr && b == nullptr) a->bounce_off_wall(1);   // particle-horizontal-wall collision
+    else if (a == nullptr && b != nullptr) b->bounce_off_wall(0);   // particle-vertical-wall collision
     else if (a == nullptr && b == nullptr) render();
     // update the priority queue with new event involving a or b
     predict(a, limit);

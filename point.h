@@ -1,15 +1,12 @@
 #ifndef POINT_H
 #define POINT_H
 
-#define INF 1000000.0;
+#define INF 1000000.0
 /* Number of points */
-#define N_POINTS 1
+#define N_POINTS 10
 #define WIDTH 400
 #define HEIGHT 300
 #define RADIUS 2
-#define DIM 1000
-#define RADIUS 1
-
 #include "vector_t.h"
 #include <cmath>
 #include <cassert>
@@ -25,11 +22,8 @@ class point{
   /* Velocity vector: v = {dx, dy} */
   vector_t v;
 
-<<<<<<< HEAD
   bool hit = false;
 
-=======
->>>>>>> 6c76c10 (overlapping particles fixed? new bug)
   int radius = RADIUS;
 
   /* Count of collisions so far for this particle */
