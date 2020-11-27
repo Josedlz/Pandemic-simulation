@@ -25,7 +25,6 @@ else()
 endif()
 
 link_directories(${SFML_LIBRARY_DIR})
-include_directories(${SFML_INCLUDE_DIR})
 
 # Instrucciones para generar el ejecutable
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCE})

@@ -2,6 +2,7 @@
 #define VECTOR_T_H 
 
 #include<iostream>
+#include<cmath>
 
 class vector_t{
     double comp[2]{};
@@ -28,6 +29,10 @@ class vector_t{
             return comp[0] * other.comp[0] + comp[1] * other.comp[1];
         }
 
+        double mod() const{
+          return sqrt(comp[0] * comp[0] + comp[1] * comp[1]);
+        }
+
         friend vector_t operator* (const double& number, const vector_t& other);
         friend vector_t operator* (const vector_t& other, const double& number);
         friend vector_t operator/ (const vector_t& other, const double& number);
@@ -45,7 +50,7 @@ inline vector_t operator* (const vector_t& other, const double& number){
 }
 
 inline vector_t operator/ (const vector_t& other, const double& number){
-    vector_t v(number / other.comp[0], number / other.comp[1]);
+    vector_t v(other.comp[0] / number, other.comp[1] / number);
     return v;
 }
 

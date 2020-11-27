@@ -65,11 +65,11 @@ double point::time_to_hit(point* other)
     std::cout << "#####################SEÑALIZADOR PARTICULAS SOBRELAPADAS####################\n";
     std::cout << "Between point " << this->get_id() << " and point " << other->get_id() << '\n';
     if(ret < 0) std::cout << "#####################SEÑALIZADOR DT NEGATIVO####################\n";
-    std::cout << sqrt(drdr) << std::endl;
+    std::cout << double(sqrt(drdr)) << std::endl;
     this->move(ret);
     other->move(ret);
     this->bounce_off(other);
-    std::cout << sqrt(drdr) << std::endl;
+    std::cout << double(sqrt(drdr)) << std::endl;
     return -1;
   }
   return ret;
@@ -91,21 +91,31 @@ double point::time_to_hit_horizontal_wall()
   return INF;
 }
 
+double point::magnitude(point* other) {
+    vector_t dr = other->r - r;
+    vector_t dv = other->v - v;
+    double dvdr = dr.dot(dv);             // dv dot dr
+    double dist = radius + other->radius;   // distance between particle centers at collison
+
+    // magnitude of normal force
+    return dvdr / dist;
+}
+
 void point::bounce_off(point* other)
 {
   std::cout << "before bounce off point 1 " << this->get_id() << " velocity is: " << v << std::endl;
   std::cout << "before bounce off point 2 " << other->get_id() << " velocity is: " << other->v << std::endl;
   vector_t dr = other->r - r;
-  vector_t dv = other->v - v;
-  double dvdr = dv.dot(dr);
   double dist = other->radius + radius;
   
-  double magnitude = dvdr / dist;
+  double mag = magnitude(other);
   
-  vector_t f = (magnitude * dr) / dist;
+  vector_t f = (mag * dr) / dist;
   
   v = v + f;
+  //v = v / v.norm();
   other->v = other->v - f;
+  //other->v = other->v / other->v.norm();
 
   /* Increment collision count for both particles */
   ++count;

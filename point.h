@@ -3,7 +3,7 @@
 
 #define INF 1000000.0
 /* Number of points */
-#define N_POINTS 2
+#define N_POINTS 100
 #define WIDTH 400
 #define HEIGHT 300
 #define RADIUS 2
@@ -67,6 +67,9 @@ class point{
 
     /* Self explanatory */
     double time_to_hit_horizontal_wall();
+
+    /* Magnitude for impulse vector */
+    double magnitude(point* other);
 
     /* Bounce both particles on opposite directions */
     void bounce_off(point* other);
